@@ -35,7 +35,7 @@ app.get('/json', function(req, res) {
  }
 });
 
-// Time server
+// Time server by chaining middleware
 app.get('/now', function (req, res, next) {
  req.time = new Date().toString();
  next();
@@ -47,6 +47,11 @@ app.get('/now', function (req, res, next) {
 app.get('/:word/echo', function (req, res) {
  res.json({"echo": req.params.word})
 });
+
+// Get Query Parameter Input from the Client
+app.route('/name').get(function (req, res) {
+ res.json({"name": req.query.firstname + " " + req.query.lastname})
+})
 
 module.exports = app;
 
