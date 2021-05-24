@@ -52,39 +52,11 @@ app.get('/:word/echo', function (req, res) {
  res.json({"echo": req.params.word})
 });
 
-// Get Query Parameter Input from the Client
+// Get Query/Body Parameter Input from the Client
 app.route('/name').get(function (req, res) {
  res.json({name: req.query.first + " " + req.query.last})
+}).post(function (req, res){
+ res.json({name: req.body.first + " " + req.body.last})
 })
 
 module.exports = app;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- module.exports = app;
