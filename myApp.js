@@ -1,4 +1,5 @@
 require('dotenv').config();
+var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 
@@ -12,6 +13,9 @@ app.use(function(req, res, next) {
  console.log(req.method + " " + req.path + " - " + req.ip);
  next();
 });
+
+// Mount POST requests body parser
+app.use(bodyParser.urlencoded({extended: false}));
 
 // Routing
 
